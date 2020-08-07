@@ -70,6 +70,9 @@ class NotionClient(object):
     def start_monitoring(self):
         self._monitor.poll_async()
 
+    def monitor_forever(self):
+        self._monitor.poll_forever()
+
     def _update_user_info(self):
         records = self.post("loadUserContent", {}).json()["recordMap"]
         self._store.store_recordmap(records)
